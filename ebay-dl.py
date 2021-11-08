@@ -76,6 +76,7 @@ if __name__ == '__main__':
     parser.add_argument('--csv', action = 'store_true')
     args = parser.parse_args()
     print('args.search_term=', args.search_term)
+    print('args.csv=', args.csv)
 
     items = [] # list of all items found in all ebay webpages
 
@@ -139,7 +140,6 @@ if __name__ == '__main__':
             #print('freereturns=',freereturns)
             
             # how many items were sold
-            #.s-item__additionalItemHotness (is this necessary???????????????)
             items_sold = None
             tags_itemssold = tag_item.select('.s-item__hotness')
             for tag in tags_itemssold:
@@ -162,14 +162,19 @@ if __name__ == '__main__':
 
     # write the json to a file 
     
-    if args.csv == 'csv': # use a for loop to write this 
+    if args.csv == True: 
         filename = args.search_term+ '.csv'
         outputFile = open(filename, 'w', newline='')
         outputWriter = csv.writer(outputFile)
-        #outputFile = outputWriter.writerow(['name', 'free_returns', 'items_sold', 'status', 'shipping', 'price'])
-        #for variable in item:
-            #outputWriter.writerow([name, freereturns, items_sold, status, shipping, price])
-        #outputFile.close()
+        outputFile = outputWriter.writerow(['name', 'free_returns', 'items_sold', 'status', 'shipping', 'price'])
+        for item in items:
+            name = item['name']
+            freereturns = item['free_returns']
+            items_sold = item['items_sold']
+            status = item['status']
+            shipping = item['shipping']
+            price = item['price']
+            outputWriter.writerow([name, freereturns, items_sold, status, shipping, price])
     else:
         filename = args.search_term+ '.json'
         with open(filename, 'w', encoding='ascii') as f:
