@@ -7,3 +7,9 @@ They ebay-dl.py file contains a program that scrapes ebay for information and st
 At the end, the program will return a json file named after the search term that has the information for all of these categories for each item in the first ten pages of the search term. 
 
 ## How to run the ebay-dl.py file
+To run the ebay-dl.py file the following command should be used:
+
+python3 ebay-dl.py 'search term'
+
+where search term can be whatever you want to look for on ebay (such as earrings or a laptop).
+
