@@ -9,7 +9,7 @@ At the end, the program will return a json file named after the search term that
 ## How to run the ebay-dl.py file
 To run the ebay-dl.py file and receive a json file of your results the following command should be used:
 
-python3 ebay-dl.py 'search term'
+<code>python3 ebay-dl.py 'search term'</code>
 
 where search term can be whatever you want to look for on ebay (such as earrings or a laptop).
 
