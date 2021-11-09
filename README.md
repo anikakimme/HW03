@@ -17,8 +17,8 @@ where search term can be whatever you want to look for on ebay (such as earrings
 
 For example:
 
-```
-python3 ebay-dl.py 'Thanksgiving'
+
+    python3 ebay-dl.py 'Thanksgiving'
 
 
 To only get one page the command line flag `--num_pages` should be used: 
