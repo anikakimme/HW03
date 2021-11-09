@@ -17,14 +17,20 @@ where search term can be whatever you want to look for on ebay (such as earrings
 
 To only get one page this command should be used: 
 
-<code>python3 ebay-dl.py 'search term' --num_pages=1</code>
+```
+python3 ebay-dl.py 'search term' --num_pages=1
+```
 
 This command will give pages one and two of the search:
 
-<code>python3 ebay-dl.py 'search term' --num_pages=2</code>
+```
+python3 ebay-dl.py 'search term' --num_pages=2
+```
 
 To get a csv file instead the following command should be used:
 
-<code>python3 ebay-dl.py 'search term' --csv</code>
+```
+python3 ebay-dl.py 'search term' --csv
 
-<code>python3 ebay-dl.py 'search term' --num_pages=1 --csv</code>
+python3 ebay-dl.py 'search term' --num_pages=1 --csv
+```
