@@ -4,7 +4,7 @@ Check out the project instructions [here](https://github.com/mikeizbicki/cmc-csc
 
 They `ebay-dl.py` file contains a program that scrapes ebay for information and stores the results in a json file. It uses the `argparse` library to get a search term for any item on ebay (e.g. hammers, stuffed animals, clothes, shoes, textbooks, etc.). Then the program will download the first 10 pages of results on the search term unless fewer pages are specified. The program also uses beautiful soup to take out items from the search results. Finally, the program creates a list with dictionaries for six categories. These include `Name:` the name of the item on ebay, `Price:` the price of the item in cents, `Status:` the status of the item such as whether it is new or refurbished, `Shipping:` the price of shipping, `Free_returns:` whether the item has free returns, and `Items_sold:` how many items have been previously sold. 
 
-At the end, the program will return a json file named after the search term that has the information for all of these categories for each item in the first ten pages of the search term. If the tag --csv is added to the command then a csv file can be created instead of a json file. 
+At the end, the program will return a json file named after the search term that has the information for all of these categories for each item in the first ten pages of the search term. If the tag `--csv` is added to the command then a csv file can be created instead of a json file. 
 
 ## How to run the ebay-dl.py file
 To run the `ebay-dl.py` file and receive a json file of your results the following command should be used:
@@ -23,7 +23,7 @@ To get multiple pages the number of pages can be changed. This command will give
 
     python3 ebay-dl.py 'search term' --num_pages=2
 
-To get a csv file instead of a json file the command line flag `csv` can be added:
+To get a csv file instead of a json file the command line flag `--csv` can be added:
 
     python3 ebay-dl.py 'search term' --csv
 
