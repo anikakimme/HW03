@@ -67,7 +67,6 @@ def parse_price(text):
     else:
         return 0
     
-# this if statement says only run the code below when the python file is run "normally"
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Download information from ebay and convert to JSON.')
@@ -78,9 +77,8 @@ if __name__ == '__main__':
     print('args.search_term=', args.search_term)
     print('args.csv=', args.csv)
 
-    items = [] # list of all items found in all ebay webpages
+    items = [] 
 
-    # loop over the ebay webpages
     for page_number in range(1,int(args.num_pages) +1):
         url = 'https://www.ebay.com/sch/i.html?_from=R40&_nkw=' 
         url += args.search_term 
@@ -90,56 +88,46 @@ if __name__ == '__main__':
         print('url=', url)
     
         r = requests.get(url)
-        status = r.status_code # 200 means success
+        status = r.status_code 
         print('status=', status)
 
         html = r.text
 
-        # process the html
         soup = BeautifulSoup(html, 'html.parser')
         
-        # loop over the items in the page
         tags_items = soup.select('.s-item')
         for tag_item in tags_items:
 
-            # name of the item
             tags_name =tag_item.select('.s-item__title')
             name = None
             for tag in tags_name:
                 name = tag.text
             #print('name=', name)
             
-            # add price here 
             price = None
             tags_price = tag_item.select('.s-item__price')
             for tag in tags_price:
                 price = parse_price(tag.text)
             #print('price=',price)
 
-            # status of item
             tags_status = tag_item.select('.SECONDARY_INFO')
             status = None
             for tag in tags_status:
                 status = tag.text
             #print('status=', status)
-
             
-            # add shipping here
             shipping = 0
             tags_shipping = tag_item.select('.s-item__shipping')
             for tag in tags_shipping:
                 shipping = parse_shipping(tag.text)
             #print('shipping=',shipping)
-            
         
-            # whether the item has free returns
             freereturns = False
             tags_freereturns = tag_item.select('.s-item__free-returns')
             for tag in tags_freereturns:
                 freereturns = True 
             #print('freereturns=',freereturns)
             
-            # how many items were sold
             items_sold = None
             tags_itemssold = tag_item.select('.s-item__hotness')
             for tag in tags_itemssold:
@@ -159,8 +147,6 @@ if __name__ == '__main__':
 
         #print('len(tag_items)=', len(tags_items))
         #print('len(items)=', len(items))  
-
-    # write the json to a file 
     
     if args.csv == True: 
         filename = args.search_term+ '.csv'
