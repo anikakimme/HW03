@@ -15,24 +15,43 @@ python3 ebay-dl.py 'search term'
 
 where search term can be whatever you want to look for on ebay (such as earrings or a laptop).
 
-To only get one page this command should be used: 
+For example:
+
+```
+python3 ebay-dl.py 'Thanksgiving'
+
+
+To only get one page the command line flag `--num_pages` should be used: 
 
 ```
 python3 ebay-dl.py 'search term' --num_pages=1
 ```
 
-This command will give pages one and two of the search:
+To get multiple pages the number of pages can be changed. This command will give pages one and two:
 
 ```
 python3 ebay-dl.py 'search term' --num_pages=2
 ```
 
-To get a csv file instead the following command should be used:
+To get a csv file instead of a json file the command line flag `csv` can be added:
 
 ```
 python3 ebay-dl.py 'search term' --csv
+```
 
+Both the command line flag `--num_pages`and `--csv` can be used at the same time:
+
+```
 python3 ebay-dl.py 'search term' --num_pages=1 --csv
 ```
 
-`test`
+I used the following commands to generate the files in this repository:
+
+```
+python3 ebay-dl.py 'Earrings'
+python3 ebay-dl.py 'Harry Potter'
+python3 ebay-dl.py 'Thanksgiving' 
+python3 ebay-dl.py 'Earrings' --csv
+python3 ebay-dl.py 'Harry Potter' --csv
+python3 ebay-dl.py 'Thanksgiving' --csv
+```
